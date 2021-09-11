@@ -38,7 +38,8 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <LoginConfirm currentUser={currentUser} userInfo={userInfo} />}
+            to="/home"
+            render={() => <HomeScreen data={this.props.userData} />}
           />
           <Route
             exact
@@ -69,6 +70,7 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
     userInfo: state.user.userInfo,
+    userData: state.userData.userData,
   };
 };
 
