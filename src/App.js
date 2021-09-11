@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import "./App.css";
-//import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import { setUserInfo } from "./Redux/actions";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import LoginConfirm from "./Screens/LoginConfirm.js";
@@ -8,27 +9,27 @@ import HomeScreen from "./Screens//HomeScreen/HomeScreen";
 import SignInPage from "./Screens/SignInPage";
 //made constructor for use of this.state
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentUser: "John Doe",
-      userInfo: {
-        username: "test",
-        email: "email",
-        password: "password",
-      },
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     currentUser: 'John Doe',
+  //     userInfo: {
+  //        username: 'test',
+  //        email: 'email',
+  //        password: 'password'
+  //     }
+  //   }
+  // }
 
   setCurrentUser = ({ username, email, password }) => {
-    //const { setUserInfo } = this.props;
-    //setUserInfo({ username, email, password });
+    const { setUserInfo } = this.props;
+    setUserInfo({ username, email, password });
     //username email and password
-    console.log("i am", username);
-    this.setState({ currentUser: username, userInfo: { username, email, password } });
+    //console.log("i am", username);
+    //this.setState({currentUser: username, userInfo: {username, email, password}})
   };
   render() {
-    //const { currentUser, userInfo } = this.props;
+    const { currentUser, userInfo } = this.props;
     //<Route exact path='/' render={() => <LoginConfirm currentUser={this.state.currentUser} userInfo={this.state.userInfo} />} />
     //login confirm is mainly for testing, goes to homescreen if a user exists, otherwise uses signinpage
     return (
@@ -37,17 +38,13 @@ class App extends Component {
           <Route
             exact
             path="/"
-            to="/home"
-            render={() => (
-              // <LoginConfirm currentUser={this.state.currentUser} userInfo={this.state.userInfo} />
-              <HomeScreen />
-            )}
+            render={() => <LoginConfirm currentUser={currentUser} userInfo={userInfo} />}
           />
           <Route
             exact
             path="/login"
             render={() =>
-              this.state.currentUser ? (
+              currentUser ? (
                 <Route
                   exact
                   to="/home"
@@ -68,4 +65,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser,
+    userInfo: state.user.userInfo,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setUserInfo: (values) => dispatch(setUserInfo(values)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
