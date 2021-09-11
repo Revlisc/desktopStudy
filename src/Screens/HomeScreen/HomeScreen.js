@@ -1,17 +1,7 @@
-import React, { useState } from "react";
 import SetButton from "../../Components/SetButton/SetButton";
 import "./HomeScreen.css";
-
-// console.log(DATA.userData);
-
-// const EditSetScreen = ({ set }) => {
-//   return <div>hi from edit set</div>;
-// };
-
+import React from "react";
 const HomeScreen = ({ data }) => {
-  //const {allSets} = this.props //from redux store
-
-  console.log(data.userData);
   return (
     <div>
       <div className="screenHeader">
