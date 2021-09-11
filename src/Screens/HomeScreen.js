@@ -8,7 +8,7 @@ const HomeScreen = () => {
   const [data, setData] = useState(DATA);
   console.log(data.userData);
   return (
-    <div >
+    <div>
       <h1>Study Screen</h1>
       {data.userData.map((set) => {
         return <SetButton key={set.id} name={set.setName} />;
