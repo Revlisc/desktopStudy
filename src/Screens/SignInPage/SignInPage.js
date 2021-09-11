@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import UserBar from '../Components/UserBar';
+import UserBar from '../../Components/UserBar';
 //import '../SignInPage.css';
-import  validateLogin  from '../utils/validateLogin.js';
+import  validateLogin  from '../../utils/validateLogin.js';
+import './SignInPage.css';
 
 //sign in page with logic to handle updating current user
 class SignInPage extends Component {
@@ -43,8 +44,11 @@ class SignInPage extends Component {
         const { username, email, password, errors } = this.state;
         return (
             <div className='signInBg'>
+                <h1>Welcome to StudyApp!</h1>
+                <h4>Sign up for your free account today.</h4>
                 <div className='formContainer'>
                     <form onSubmit={this.handleSubmit}>
+                        <h4>Name</h4>
                         <UserBar 
                             value={username} 
                             required 
@@ -52,7 +56,9 @@ class SignInPage extends Component {
                             onChange={this.handleChange} 
                             error={errors.name} 
                             placeholder='Username...'
+                            className='userbar'
                         />
+                        <h4>Email</h4>
                         <UserBar 
                             value={email} 
                             required 
@@ -60,7 +66,9 @@ class SignInPage extends Component {
                             onChange={this.handleChange} 
                             error={errors.email} 
                             placeholder='Email...'
+                            className='userbar'
                         />
+                        <h4>Password</h4>
                         <UserBar 
                             value={password} 
                             required 
@@ -68,8 +76,9 @@ class SignInPage extends Component {
                             onChange={this.handleChange} 
                             error={errors.password} 
                             placeholder='Password...'
+                            className='userbar'
                         />
-                        <button classname='submitBtn' type='submit'>Submit</button>
+                        <button className='submitBtnSignIn' type='submit'>Sign Up</button>
                     
                     </form>
                 </div>

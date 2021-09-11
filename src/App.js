@@ -6,7 +6,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import LoginConfirm from './Screens/LoginConfirm.js';
 import HomeScreen from './Screens/HomeScreen.js';
-import SignInPage from './Screens/SignInPage';
+import SignInPage from './Screens/SignInPage/SignInPage';
 //made constructor for use of this.state
 class App extends Component {
   // constructor(props) {
@@ -39,8 +39,8 @@ class App extends Component {
       <Fragment>
           
           <Switch>
-            <Route exact path='/' render={() => <LoginConfirm currentUser={currentUser} userInfo={userInfo} />} />
-            <Route exact path='/login'
+            <Route exact path='/asdf' render={() => <LoginConfirm currentUser={currentUser} userInfo={userInfo} />} />
+            <Route exact path='/'
               render={() => currentUser ? (
                 <Route exact to='/home' render={() => <div className=""><HomeScreen className=''/></div>} />
               ) : (
