@@ -1,0 +1,15 @@
+.homeScreenContainer {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.screenHeader {
+  text-align: left;
+  margin-left: 30px;
+  border-bottom: 2px solid black;
+  width: 150px;
+  /* line height for underline spacing */
+  line-height: 15px;
+}

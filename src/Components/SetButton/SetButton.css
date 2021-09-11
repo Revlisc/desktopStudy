@@ -1,0 +1,10 @@
+/* * {
+  border: 1px solid black;
+} */
+
+.setButton {
+  padding: 30px;
+  background-color: rgba(108, 97, 235, 0.41);
+  margin: 10px 15px 0 0;
+  border-radius: 15px;
+}
