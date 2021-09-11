@@ -4,7 +4,7 @@ import "./App.css";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import LoginConfirm from "./Screens/LoginConfirm.js";
-import HomeScreen from "./Screens/HomeScreen.js";
+import HomeScreen from "./Screens//HomeScreen/HomeScreen";
 import SignInPage from "./Screens/SignInPage";
 //made constructor for use of this.state
 class App extends Component {
@@ -37,8 +37,10 @@ class App extends Component {
           <Route
             exact
             path="/"
+            to="/home"
             render={() => (
-              <LoginConfirm currentUser={this.state.currentUser} userInfo={this.state.userInfo} />
+              // <LoginConfirm currentUser={this.state.currentUser} userInfo={this.state.userInfo} />
+              <HomeScreen />
             )}
           />
           <Route
