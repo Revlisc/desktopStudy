@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import SetButton from "../../Components/SetButtonFolder/SetButton";
 import "./HomeScreen.css";
-import React from "react";
+
 const HomeScreen = ({ data }) => {
   return (
     <div>

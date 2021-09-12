@@ -14,7 +14,7 @@ const EditSetScreen = ({ data }) => {
       </div>
 
       <div className="editSetContainer">
-        <div className="formContainer">
+        <div className="formContainer_editScreen">
           <form>
             {/* <label for="title">title</label> */}
             <div className="formItem">

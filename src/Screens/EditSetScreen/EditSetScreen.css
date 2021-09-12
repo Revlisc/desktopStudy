@@ -1,6 +1,7 @@
-/* * {
-  border: 1px solid black;
-} */
+* {
+  /* border: 1px solid black; */
+  box-sizing: border-box;
+}
 
 .editSetContainer {
   margin: 0 30px 0 30px;
@@ -15,8 +16,12 @@
   line-height: 15px;
 }
 
-.formContainer .formItem {
-  background-color: white;
+.formContainer_editScreen {
+  margin-left: 0;
+  width: 100%;
+}
+
+.formContainer_editScreen .formItem {
   margin: 15px 25px 15px 0;
 }
 
