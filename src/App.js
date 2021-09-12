@@ -7,6 +7,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import LoginConfirm from "./Screens/LoginConfirm.js";
 import HomeScreen from "./Screens//HomeScreen/HomeScreen";
 import SignInPage from "./Screens/SignInPage";
+import EditSetScreen from "./Screens/EditSetScreen/EditSetScreen";
 //made constructor for use of this.state
 class App extends Component {
   // constructor(props) {
@@ -38,8 +39,14 @@ class App extends Component {
           <Route
             exact
             path="/"
-            to="/home"
+            // to="/home"
+            //changed this route from login confirm to home for testing
             render={() => <HomeScreen data={this.props.userData} />}
+          />
+          <Route
+            exact
+            path="/editSet"
+            render={() => <EditSetScreen data={this.props.userData} />}
           />
           <Route
             exact
