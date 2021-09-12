@@ -6,7 +6,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 
 
-import HomeScreen from './Screens/HomeScreen.js';
+import HomeScreen from './Screens/HomeScreen/HomeScreen';
 import SignUpPage from './Screens/SignUpPage/SignUpPage';
 import LoginScreen from './Screens/LoginScreen/LoginScreen';
 
