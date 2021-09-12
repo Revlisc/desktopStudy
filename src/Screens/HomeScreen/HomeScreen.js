@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SetButton from "../../Components/SetButton/SetButton";
+import SetButton  from '../../Components/SetButtonFolder/SetButton';
 import "./HomeScreen.css";
 import { DATA } from "../../TEST_DATA/DATA";
 // console.log(DATA.userData);
