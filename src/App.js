@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { setUserInfo } from "./Redux/actions";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import LoginConfirm from "./Screens/LoginConfirm.js";
-import HomeScreen from "./Screens//HomeScreen/HomeScreen";
-import SignInPage from "./Screens/SignInPage";
-import EditSetScreen from "./Screens/EditSetScreen/EditSetScreen";
+import HomeScreen from "./Screens/HomeScreen/HomeScreen";
+import SignUpPage from "./Screens/SignUpPage/SignUpPage";
+import LoginScreen from "./Screens/LoginScreen/LoginScreen";
+
 //made constructor for use of this.state
 class App extends Component {
   // constructor(props) {
@@ -39,14 +39,21 @@ class App extends Component {
           <Route
             exact
             path="/"
-            // to="/home"
-            //changed this route from login confirm to home for testing
-            render={() => <HomeScreen data={this.props.userData} />}
-          />
-          <Route
-            exact
-            path="/editSet"
-            render={() => <EditSetScreen data={this.props.userData} />}
+            render={() =>
+              currentUser ? (
+                <Route
+                  exact
+                  to="/home"
+                  render={() => (
+                    <div className="">
+                      <HomeScreen className="" />
+                    </div>
+                  )}
+                />
+              ) : (
+                <SignUpPage setCurrentUser={this.setCurrentUser} />
+              )
+            }
           />
           <Route
             exact
@@ -63,7 +70,7 @@ class App extends Component {
                   )}
                 />
               ) : (
-                <SignInPage setCurrentUser={this.setCurrentUser} />
+                <LoginScreen setCurrentUser={this.setCurrentUser} />
               )
             }
           />

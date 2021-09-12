@@ -1,4 +1,5 @@
-import SetButton from "../../Components/SetButton/SetButton";
+import React, { useState } from "react";
+import SetButton from "../../Components/SetButtonFolder/SetButton";
 import "./HomeScreen.css";
 import React from "react";
 const HomeScreen = ({ data }) => {

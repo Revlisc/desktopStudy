@@ -1,8 +1,9 @@
-//logic to validate sign-in info
-
 export default function validateLogin(values) {
     let errors = {}
 
+    if(!values.username) {
+        errors.email = 'username required';
+    }
     //email
     if(!values.email) {
         errors.email = 'email required';
