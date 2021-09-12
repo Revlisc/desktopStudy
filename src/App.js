@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { setUserInfo } from './Redux/actions'
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import LoginConfirm from './Screens/LoginConfirm.js';
+
 import HomeScreen from './Screens/HomeScreen.js';
-import SignInPage from './Screens/SignInPage/SignInPage';
+import SignUpPage from './Screens/SignUpPage/SignUpPage';
+import LoginScreen from './Screens/LoginScreen/LoginScreen';
 //made constructor for use of this.state
 class App extends Component {
   // constructor(props) {
@@ -39,12 +40,19 @@ class App extends Component {
       <Fragment>
           
           <Switch>
-            <Route exact path='/asdf' render={() => <LoginConfirm currentUser={currentUser} userInfo={userInfo} />} />
+            
             <Route exact path='/'
               render={() => currentUser ? (
                 <Route exact to='/home' render={() => <div className=""><HomeScreen className=''/></div>} />
               ) : (
-                <SignInPage setCurrentUser={this.setCurrentUser} />
+                <SignUpPage setCurrentUser={this.setCurrentUser}/>
+              )}
+            />
+            <Route exact path='/login'
+              render={() => currentUser ? (
+                <Route exact to='/home' render={() => <div className=""><HomeScreen className=''/></div>} />
+              ) : (
+                <LoginScreen setCurrentUser={this.setCurrentUser}/>
               )}
             />
           </Switch>

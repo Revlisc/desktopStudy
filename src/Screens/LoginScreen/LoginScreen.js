@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import UserBar from '../../Components/UserBar';
-//import '../SignInPage.css';
-import  validateLogin  from '../../utils/validateLogin.js';
-import './SignInPage.css';
+import React, {Component} from 'react';
 
-//sign in page with logic to handle updating current user
-class SignInPage extends Component {
+import validateSignUp  from '../../utils/validateSignUp.js';
+import UserBar from '../../Components/UserBar';
+
+
+class LoginScreen extends Component {
+    
     state = {
         username: '',
         email: '',
@@ -23,7 +23,7 @@ class SignInPage extends Component {
         e.preventDefault();
         const values = {username, email, password};
         console.log(values);
-        const errors = validateLogin(values);
+        const errors = validateSignUp(values);
         console.log(errors);
         const noError = Object.keys(errors).length === 0;
         if (noError) {
@@ -34,8 +34,9 @@ class SignInPage extends Component {
                 errors: {}
             })
             setCurrentUser(values)
+            console.log('values are', values)
         } else {
-            console.error(errors);
+            console.error('errors are', errors);
             this.setState({values, errors})
         }
     }
@@ -44,8 +45,8 @@ class SignInPage extends Component {
         const { username, email, password, errors } = this.state;
         return (
             <div className='signInBg'>
-                <h1>Welcome to StudyApp!</h1>
-                <h4>Sign up for your free account today.</h4>
+                <h1>StudyApp!</h1>
+                <h4>Login to Your Account</h4>
                 <div className='formContainer'>
                     <form onSubmit={this.handleSubmit}>
                         <h4>Name</h4>
@@ -78,13 +79,15 @@ class SignInPage extends Component {
                             placeholder='Password...'
                             className='userbar'
                         />
-                        <button className='submitBtnSignIn' type='submit'>Sign Up</button>
-                    
+                        
+                        <button className='submitBtnSignIn' type='submit'>Sign In</button>
                     </form>
+                    
+            
                 </div>
             </div>
         );
     }
 }
 
-export default SignInPage;
+export default LoginScreen;
