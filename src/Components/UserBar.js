@@ -1,5 +1,5 @@
 import React from 'react';
-//import '../UserBar.css';
+import '../UserBar.css';
 
 //each text in sign in page
 const UserBar = ({onChange, error, ...rest}) => {
