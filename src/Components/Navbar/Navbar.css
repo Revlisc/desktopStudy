@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+.Navbar {
+  background-color: #3e3d57;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+body {
+  line-height: 2;
+  margin: 0;
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+li {
+  text-decoration: none;
+  color: #f5f8ff;
+  font-size: 1.3rem;
+}
+
+.nav-logo {
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.navcreatebtn-container {
+  background-color: #6c61eb;
+  border-radius: 30px;
+}
