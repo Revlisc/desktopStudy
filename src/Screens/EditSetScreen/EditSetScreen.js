@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { useLocation } from "react-router";
 import AddNewQuestion from "../../Components/AddNewQuestionComponent/AddNewQuestionComponent";
+import EditQuestion from "../../Components/EditQuestion/EditQuestion";
 import "./EditSetScreen.css";
 
 const EditSetScreen = ({ data }) => {
@@ -61,11 +62,9 @@ const EditSetScreen = ({ data }) => {
 
         <div className="questionListContainer">
           <div>
-            <ul>
-              {currentSet.questions.map((question) => {
-                return <li key={question.id}>{`${question.question} : ${question.answer}`}</li>;
-              })}
-            </ul>
+            {currentSet.questions.map((question) => {
+              return <EditQuestion key={question.id} currentSet={currentSet} question={question} />;
+            })}
           </div>
         </div>
 

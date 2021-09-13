@@ -39,6 +39,9 @@ const AddNewQuestion = ({ currentSet, addQuestion, userData }) => {
     //dispatch action
 
     addQuestion(updatedState);
+    //reset form
+    setTerm("");
+    setdefinition("");
   };
 
   return (
