@@ -17,8 +17,8 @@ const ReviewScreen = ({data}) => {
     let currentSet = data.filter((set) => set.id === setId)[0];
     //const current = currentSet.questions[index]
 
-    // const wrong = []
-    // const correct = []
+    const wrong = []
+    const correct = []
 
     function showPrevCard() {
         if (index >= 0) {
@@ -36,6 +36,16 @@ const ReviewScreen = ({data}) => {
             console.log(newIndex)
             setIndex(newIndex)
         }
+    }
+
+    function addCorrect() {
+        correct.push(index)
+        console.log(correct)
+    }
+
+    function addIncorrect() {
+        wrong.push(index)
+        console.log(wrong)
     }
     
     let current = currentSet.questions.filter(current => current.id === index)
@@ -68,6 +78,23 @@ const ReviewScreen = ({data}) => {
                     }}
                 >
                     Next
+                </div>
+            </div>
+            <div>
+                <div
+                    
+                    onClick={() => {
+                        addCorrect()
+                    }}
+                >
+                    check
+                </div>
+                <div
+                    onClick={() => {
+                        addIncorrect()
+                    }}
+                >
+                    x
                 </div>
             </div>
         </div>
