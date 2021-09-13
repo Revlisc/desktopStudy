@@ -26,9 +26,19 @@ const AddNewQuestion = ({ currentSet, addQuestion, userData }) => {
     const updatedQuestions = existingQuestions.concat(newQuestion);
     //update whole set with new questions
     let updatedSet = { ...currentSet, questions: updatedQuestions };
+    //merge updatedSet into userData
+
+    const updatedState = userData.map((set) => {
+      if (set.id === currentSet.id) {
+        return updatedSet;
+      }
+      return set;
+    });
+    console.log(updatedState);
+
     //dispatch action
 
-    addQuestion(updatedSet);
+    addQuestion(updatedState);
   };
 
   return (
@@ -68,7 +78,7 @@ const AddNewQuestion = ({ currentSet, addQuestion, userData }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addQuestion: (updatedSet) => dispatch(addQuestion(updatedSet)),
+    addQuestion: (updatedState) => dispatch(addQuestion(updatedState)),
   };
 };
 

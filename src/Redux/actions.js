@@ -5,7 +5,7 @@ export const setUserInfo = (values) => ({
   payload: values,
 });
 
-export const addQuestion = (updatedSet) => ({
+export const addQuestion = (updatedState) => ({
   type: actionTypes.ADD_QUESTION,
-  payload: updatedSet,
+  payload: updatedState,
 });
