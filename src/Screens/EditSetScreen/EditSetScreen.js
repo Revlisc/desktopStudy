@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { useLocation } from "react-router";
+import AddNewQuestion from "../../Components/AddNewQuestionComponent/AddNewQuestionComponent";
 import "./EditSetScreen.css";
 
 const EditSetScreen = ({ data }) => {
@@ -60,20 +61,17 @@ const EditSetScreen = ({ data }) => {
           </form>
         </div>
 
-        <div className="questionListContainer">{/* render wuestions here */}</div>
-
-        <div className="questionAddForm">
-          <form>
-            <input type="text" id="term" name="term" placeholder="term" />
-
-            <input type="text" id="definition" name="definition" placeholder="definition" />
-          </form>
-
-          <div className="labels">
-            <p className="inputLabel">Term</p>
-            <p className="inputLabel"> Definition</p>
+        <div className="questionListContainer">
+          <div>
+            <ul>
+              {currentSet.questions.map((question) => {
+                return <li key={question.id}>{`${question.question} : ${question.answer}`}</li>;
+              })}
+            </ul>
           </div>
         </div>
+
+        <AddNewQuestion currentSet={currentSet} />
       </div>
     </div>
   );
