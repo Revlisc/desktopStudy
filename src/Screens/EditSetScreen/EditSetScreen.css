@@ -1,0 +1,27 @@
+* {
+  /* border: 1px solid black; */
+  box-sizing: border-box;
+}
+
+.editSetContainer {
+  margin: 0 30px 0 30px;
+}
+
+.screenHeader {
+  text-align: left;
+  margin-left: 30px;
+  border-bottom: 2px solid black;
+  width: 150px;
+  /* line height for underline spacing */
+  line-height: 15px;
+}
+
+.formContainer_editScreen .formItem {
+  margin: 15px 25px 15px 0;
+}
+
+.formItem input {
+  padding: 15px 15px;
+  width: 100%;
+  border: none;
+}

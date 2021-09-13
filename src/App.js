@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 import { setUserInfo } from "./Redux/actions";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-
-
-import HomeScreen from './Screens/HomeScreen/HomeScreen';
-import SignUpPage from './Screens/SignUpPage/SignUpPage';
-import LoginScreen from './Screens/LoginScreen/LoginScreen';
+import HomeScreen from "./Screens/HomeScreen/HomeScreen";
+import SignUpPage from "./Screens/SignUpPage/SignUpPage";
+import LoginScreen from "./Screens/LoginScreen/LoginScreen";
+import EditSetScreen from "./Screens/EditSetScreen/EditSetScreen";
 
 //made constructor for use of this.state
 class App extends Component {
@@ -32,30 +31,54 @@ class App extends Component {
     //this.setState({currentUser: username, userInfo: {username, email, password}})
   };
   render() {
-    const { currentUser, userInfo } = this.props;
+    const { currentUser, userInfo, userData } = this.props;
     //<Route exact path='/' render={() => <LoginConfirm currentUser={this.state.currentUser} userInfo={this.state.userInfo} />} />
     //login confirm is mainly for testing, goes to homescreen if a user exists, otherwise uses signinpage
     return (
       <Fragment>
- 
-          <Switch>
-            
-            <Route exact path='/'
-              render={() => currentUser ? (
-                <Route exact to='/home' render={() => <div className=""><HomeScreen className=''/></div>} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() =>
+              currentUser ? (
+                <Route
+                  exact
+                  to="/home"
+                  render={() => (
+                    <div className="">
+                      <HomeScreen className="" />
+                    </div>
+                  )}
+                />
               ) : (
-                <SignUpPage setCurrentUser={this.setCurrentUser}/>
-              )}
-            />
-            <Route exact path='/login'
-              render={() => currentUser ? (
-                <Route exact to='/home' render={() => <div className=""><HomeScreen className=''/></div>} />
+                <SignUpPage setCurrentUser={this.setCurrentUser} />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              currentUser ? (
+                <Route
+                  exact
+                  to="/home"
+                  render={() => (
+                    <div className="">
+                      <HomeScreen data={userData} />
+                    </div>
+                  )}
+                />
               ) : (
-                <LoginScreen setCurrentUser={this.setCurrentUser}/>
-              )}
-            />
-          </Switch>
-          
+                <LoginScreen setCurrentUser={this.setCurrentUser} />
+              )
+            }
+          />
+
+          {/* route for EditSetScreen */}
+          <Route exact path="/editSet" render={() => <EditSetScreen data={userData} />} />
+        </Switch>
       </Fragment>
     );
   }
@@ -65,6 +88,7 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
     userInfo: state.user.userInfo,
+    userData: state.userData.userData,
   };
 };
 
