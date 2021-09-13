@@ -14,12 +14,10 @@ const EditSetScreen = ({ data }) => {
   const [title, setTitle] = useState(currentSet.setName);
   const [description, setDescription] = useState(currentSet.description);
 
-  console.log(currentSet);
-
   const handleChange = (e) => {
     e.preventDefault();
     console.log(e.target);
-    if (e.target.id == "title") {
+    if (e.target.id === "title") {
       setTitle(e.target.value);
     } else {
       setDescription(e.target.value);
