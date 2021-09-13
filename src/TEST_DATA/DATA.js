@@ -7,13 +7,13 @@ export const DATA = [
       {
         question: "What is tha capital of Texas?",
         answer: "Austin",
-        id: 12314,
+        id: 1,
       },
 
       {
         question: "What color is the sky",
         answer: "blue",
-        id: 345234,
+        id: 2,
       },
     ],
   },
@@ -26,13 +26,13 @@ export const DATA = [
       {
         question: "What is my name",
         answer: "Charles",
-        id: 52646,
+        id: 1,
       },
 
       {
         question: "What is a dog?",
         answer: "blue",
-        id: 9999,
+        id: 2,
       },
     ],
   },

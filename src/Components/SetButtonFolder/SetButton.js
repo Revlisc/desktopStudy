@@ -7,6 +7,7 @@ const SetButton = ({ set }) => {
     <div className="setButton">
       <h2>{set.setName}</h2>
       <Link to={{ pathname: "/editSet", state: { setId: set.id } }}>Edit This Set</Link>
+      <Link to={{ pathname: '/testSet', state: { setId: set.id }}}>Test Your Knowledge</Link>
     </div>
   );
 };
