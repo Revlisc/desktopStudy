@@ -9,3 +9,8 @@ export const addQuestion = (updatedState) => ({
   type: actionTypes.ADD_QUESTION,
   payload: updatedState,
 });
+
+export const editQuestion = (updatedState) => ({
+  type: actionTypes.EDIT_QUESTION,
+  payload: updatedState,
+});

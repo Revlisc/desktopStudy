@@ -1,8 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { editQuestion } from "../../Redux/actions";
 
-const EditQuestion = ({ currentSet, question }) => {
+const EditQuestion = ({ currentSet, question, userData, editQuestion }) => {
   const [term, setTerm] = useState(question.question);
   const [answer, setAnswer] = useState(question.answer);
+  const [showBtn, setShowBtn] = useState(false);
+
+  useEffect(() => {
+    setShowBtn(true);
+  }, [term, answer]);
+  //had to set showBtn to false on initial component load
+  useEffect(() => {
+    setShowBtn(false);
+  }, []);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -15,8 +26,45 @@ const EditQuestion = ({ currentSet, question }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(term, answer);
+    console.log(term, answer, question.id);
+
     //edit current question
+
+    //create copy of question to be changed
+    const questionToEdit = question;
+    console.log("old", questionToEdit);
+    //create updated question
+    const updatedQuestion = { ...questionToEdit, question: term, answer: answer };
+    console.log("new", updatedQuestion);
+
+    //merge into questions array from set
+
+    const updatedSetQuestions = currentSet.questions.map((questionFromSet) => {
+      if (questionFromSet.id === question.id) {
+        return updatedQuestion;
+      }
+      return questionFromSet;
+    });
+
+    console.log("updated questions array", updatedSetQuestions);
+
+    //merge into whole entire set
+    const newSet = { ...currentSet, questions: updatedSetQuestions };
+    console.log(newSet);
+
+    //merge into new state
+
+    const updatedState = userData.map((set) => {
+      if (set.id === currentSet.id) {
+        return newSet;
+      }
+      return set;
+    });
+
+    console.log(updatedState);
+
+    //dispatch to redux
+    editQuestion(updatedState);
   };
   return (
     <div className="questionAddForm">
@@ -44,13 +92,27 @@ const EditQuestion = ({ currentSet, question }) => {
         <p className="inputLabel"> Definition</p>
       </div> */}
         <div>
-          <button type="submit" onClick={(e) => handleSubmit(e)}>
-            submit
-          </button>
+          {showBtn === true ? (
+            <button type="submit" onClick={(e) => handleSubmit(e)}>
+              submit
+            </button>
+          ) : (
+            <div />
+          )}
         </div>
       </form>
     </div>
   );
 };
 
-export default EditQuestion;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editQuestion: (updatedState) => dispatch(editQuestion(updatedState)),
+  };
+};
+
+const mapStateToProps = (state) => ({
+  userData: state.userData.userData,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditQuestion);

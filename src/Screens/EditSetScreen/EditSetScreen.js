@@ -24,6 +24,10 @@ const EditSetScreen = ({ data }) => {
       setDescription(e.target.value);
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div>
       <div className="screenHeader">
@@ -70,6 +74,10 @@ const EditSetScreen = ({ data }) => {
 
         <AddNewQuestion currentSet={currentSet} />
       </div>
+
+      {/* <div className="submitBtn" onClick={(e) => handleSubmit(e)}>
+        Submit Changes
+      </div> */}
     </div>
   );
 };
