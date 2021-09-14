@@ -8,7 +8,7 @@ import HomeScreen from "./Screens/HomeScreen/HomeScreen";
 import SignUpPage from "./Screens/SignUpPage/SignUpPage";
 import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import EditSetScreen from "./Screens/EditSetScreen/EditSetScreen";
-import Navbar from "../src/Components/Navbar/Navbar";
+import NavbarLogin from "../src/Components/Navbar/NavbarLogin";
 
 //made constructor for use of this.state
 class App extends Component {
@@ -37,7 +37,7 @@ class App extends Component {
     //login confirm is mainly for testing, goes to homescreen if a user exists, otherwise uses signinpage
     return (
       <Fragment>
-        <Navbar />
+        <NavbarLogin />
         <Switch>
           <Route
             exact

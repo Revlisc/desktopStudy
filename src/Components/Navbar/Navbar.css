@@ -88,7 +88,29 @@ li {
   padding-right: 13px;
 }
 
+/* Styling for NavbarLogin Page */
+
+.login-btn {
+  background-color: #6c61eb;
+  color: #f5f8ff;
+  margin-bottom: 1.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 3rem;
+  font-weight: normal;
+}
+
+.login-link {
+  position: relative;
+}
+
+.login-item {
+  float: right;
+  margin-right: 2rem;
+}
+
 /* Responsiveness */
+
 .menu-btn {
   display: none;
 }
