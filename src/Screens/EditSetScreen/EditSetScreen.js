@@ -46,14 +46,40 @@ const EditSetScreen = ({ data }) => {
     setCurrentSet(updatedSet);
   };
 
-  // const handleQuestionInputChange = (e) => {
-  //   e.preventDefault();
-  //   if (e.target.id === "term") {
-  //     setTerm(e.target.value);
-  //   } else {
-  //     setAnswer(e.target.value);
-  //   }
-  // };
+  const handleQuestionInputChange = (e, id) => {
+    e.preventDefault();
+
+    //we need to update individual questions inside of local state
+
+    console.log(e.target.id, id);
+    //go inside state, update respective question
+    const questions = currentSet.questions;
+
+    const questionToChange = questions.filter((question) => question.id === id)[0];
+    console.log(questionToChange);
+    //update question property on questionToChange
+    const updatedQuestion = { ...questionToChange, [e.target.id]: e.target.value };
+    console.log(updatedQuestion);
+    //map over questions, change respective question
+    const updatedQuestions = questions.map((question) => {
+      if (question.id === id) {
+        return updatedQuestion;
+      }
+      return question;
+    });
+
+    console.log(updatedQuestions);
+    //then merge into state
+    const updatedSet = { ...currentSet, questions: updatedQuestions };
+    console.log(updatedSet);
+    setCurrentSet(updatedSet);
+
+    // if (e.target.id === "term") {
+    //   console.log(e.target.id, id);
+    // } else {
+    //   console.log(e.target.id, id);
+    // }
+  };
   //this will submit ALL changes
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -97,7 +123,14 @@ const EditSetScreen = ({ data }) => {
         <div className="questionListContainer">
           <div>
             {currentSet.questions.map((question) => {
-              return <EditQuestion key={question.id} currentSet={currentSet} question={question} />;
+              return (
+                <EditQuestion
+                  key={question.id}
+                  currentSet={currentSet}
+                  question={question}
+                  onChangeHandler={handleQuestionInputChange}
+                />
+              );
             })}
           </div>
         </div>
