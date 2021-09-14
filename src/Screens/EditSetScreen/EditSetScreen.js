@@ -14,17 +14,23 @@ const EditSetScreen = ({ userData, updateSet }) => {
   let setFromProps = userData.filter((set) => set.id === setId)[0];
 
   const [currentSet, setCurrentSet] = useState(setFromProps);
-  const [title, setTitle] = useState(currentSet.setName);
-  const [description, setDescription] = useState(currentSet.description);
+  // const [title, setTitle] = useState(currentSet.setName);
+  // const [description, setDescription] = useState(currentSet.description);
+  //refractor title and descirption into currentSet
 
   const handleInfoChange = (e) => {
     e.preventDefault();
 
-    if (e.target.id === "title") {
-      setTitle(e.target.value);
-    } else {
-      setDescription(e.target.value);
-    }
+    setCurrentSet({
+      ...currentSet,
+      [e.target.id]: e.target.value,
+    });
+
+    // if (e.target.id === "title") {
+    //   setTitle(e.target.value);
+    // } else {
+    //   setDescription(e.target.value);
+    // }
   };
 
   const handleNewQuestionSubmit = (e, term, definition) => {
@@ -98,9 +104,9 @@ const EditSetScreen = ({ userData, updateSet }) => {
               <label for="text">
                 <input
                   type="text"
-                  id="title"
-                  name="title"
-                  value={title}
+                  id="setName"
+                  name="setName"
+                  value={currentSet.setName}
                   onChange={(e) => handleInfoChange(e)}
                 />
               </label>
@@ -112,7 +118,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
                   type="textarea"
                   id="description"
                   name="description"
-                  value={description}
+                  value={currentSet.description}
                   onChange={(e) => handleInfoChange(e)}
                 />
               </label>
