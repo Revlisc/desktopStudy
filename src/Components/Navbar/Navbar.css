@@ -50,11 +50,16 @@ li {
 
 .navcreatebtn-container {
   background-color: #6c61eb;
-  border-radius: 30px;
   padding: 3px;
-  width: 30px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 13px;
 }
 
 .fa-plus {
   text-align: center;
+  padding-bottom: 40px;
+  position: relative;
+  bottom: 2px;
 }
