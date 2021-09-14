@@ -8,7 +8,7 @@ import HomeScreen from "./Screens/HomeScreen/HomeScreen";
 import SignUpPage from "./Screens/SignUpPage/SignUpPage";
 import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import EditSetScreen from "./Screens/EditSetScreen/EditSetScreen";
-import ReviewScreen from "./Screens/Review/ReviewScreen";
+import Navbar from "../src/Components/Navbar/Navbar";
 
 //made constructor for use of this.state
 class App extends Component {
@@ -37,6 +37,7 @@ class App extends Component {
     //login confirm is mainly for testing, goes to homescreen if a user exists, otherwise uses signinpage
     return (
       <Fragment>
+        <Navbar />
         <Switch>
           <Route
             exact
@@ -78,8 +79,11 @@ class App extends Component {
           />
 
           {/* route for EditSetScreen */}
-          <Route exact path="/editSet" render={() => <EditSetScreen data={userData} />} />
-          <Route exact path='/testSet' render={() => <ReviewScreen data={userData}/>} />
+          <Route
+            exact
+            path="/editSet"
+            render={() => <EditSetScreen data={userData} />}
+          />
         </Switch>
       </Fragment>
     );
