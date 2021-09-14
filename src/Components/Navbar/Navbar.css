@@ -1,0 +1,65 @@
+.Navbar {
+  background-color: #3e3d57;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 2;
+  margin: 0;
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+a,
+li {
+  text-decoration: none;
+  color: #f5f8ff;
+  font-size: 1.3rem;
+  display: block;
+  padding: 0.3rem;
+}
+
+li {
+  float: left;
+}
+
+.nav-logo {
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  padding-left: 2rem;
+}
+
+.nav-links {
+  position: relative;
+  top: 8px;
+}
+
+.nav-links-left {
+  padding-left: 0.3em;
+}
+
+.navcreatebtn-container {
+  background-color: #6c61eb;
+  padding: 3px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 13px;
+}
+
+.fa-plus {
+  text-align: center;
+  padding-bottom: 40px;
+  position: relative;
+  bottom: 2px;
+}
