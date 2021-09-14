@@ -10,11 +10,13 @@ const EditSetScreen = ({ data }) => {
   const location = useLocation();
   const { setId } = location.state;
   //filter out set being edited from all sets
-  let currentSet = data.filter((set) => set.id === setId)[0];
+  let setFromProps = data.filter((set) => set.id === setId)[0];
 
+  const [currentSet, setCurrentSet] = useState(setFromProps);
   const [title, setTitle] = useState(currentSet.setName);
   const [description, setDescription] = useState(currentSet.description);
-  //store state from redux store, read state from local state. submit to redux on submit
+  console.log("current set", currentSet);
+  //store state from data prop (refractor to redux), read state from local state. submit to redux on submit
 
   //refractor methods and local state to EditSetSceen, making it a container component
 
