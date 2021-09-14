@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addQuestion } from "../../Redux/actions";
 import "./AddNewQuestionComponent.css";
 
-const AddNewQuestion = ({ currentSet, addQuestion, userData }) => {
+const AddNewQuestion = ({ currentSet, addQuestion, userData, handleSubmit }) => {
   const [term, setTerm] = useState("");
   const [definition, setdefinition] = useState("");
 
@@ -16,33 +16,33 @@ const AddNewQuestion = ({ currentSet, addQuestion, userData }) => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //create copy of questions
-    const existingQuestions = currentSet.questions;
-    //create new question object
-    const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
-    //combine new question with existing questions
-    const updatedQuestions = existingQuestions.concat(newQuestion);
-    //update whole set with new questions
-    let updatedSet = { ...currentSet, questions: updatedQuestions };
-    //merge updatedSet into userData
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   //create copy of questions
+  //   const existingQuestions = currentSet.questions;
+  //   //create new question object
+  //   const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
+  //   //combine new question with existing questions
+  //   const updatedQuestions = existingQuestions.concat(newQuestion);
+  //   //update whole set with new questions
+  //   let updatedSet = { ...currentSet, questions: updatedQuestions };
+  //   //merge updatedSet into userData
 
-    const updatedState = userData.map((set) => {
-      if (set.id === currentSet.id) {
-        return updatedSet;
-      }
-      return set;
-    });
-    console.log(updatedState);
+  //   const updatedState = userData.map((set) => {
+  //     if (set.id === currentSet.id) {
+  //       return updatedSet;
+  //     }
+  //     return set;
+  //   });
+  //   console.log(updatedState);
 
-    //dispatch action
+  //   //dispatch action
 
-    addQuestion(updatedState);
-    //reset form
-    setTerm("");
-    setdefinition("");
-  };
+  //   addQuestion(updatedState);
+  //   //reset form
+  //   setTerm("");
+  //   setdefinition("");
+  // };
 
   return (
     <div className="questionAddForm">
@@ -70,7 +70,7 @@ const AddNewQuestion = ({ currentSet, addQuestion, userData }) => {
           <p className="inputLabel"> Definition</p>
         </div> */}
         <div>
-          <button type="submit" onClick={(e) => handleSubmit(e)}>
+          <button type="submit" onClick={(e) => handleSubmit(e, term, definition)}>
             submit
           </button>
         </div>

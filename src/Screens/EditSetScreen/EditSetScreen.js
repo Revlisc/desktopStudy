@@ -30,6 +30,22 @@ const EditSetScreen = ({ data }) => {
     }
   };
 
+  const handleNewQuestionSubmit = (e, term, definition) => {
+    e.preventDefault();
+    console.log(term, definition);
+    //add to currentSet in local state
+    const questions = currentSet.questions;
+    const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
+    console.log(questions);
+    console.log(newQuestion);
+    const updatedQuestions = questions.concat(newQuestion);
+    console.log(updatedQuestions);
+    //merge new questions into new set
+    const updatedSet = { ...currentSet, questions: updatedQuestions };
+    console.log(updatedSet);
+    setCurrentSet(updatedSet);
+  };
+
   // const handleQuestionInputChange = (e) => {
   //   e.preventDefault();
   //   if (e.target.id === "term") {
@@ -86,7 +102,7 @@ const EditSetScreen = ({ data }) => {
           </div>
         </div>
 
-        <AddNewQuestion currentSet={currentSet} />
+        <AddNewQuestion handleSubmit={handleNewQuestionSubmit} currentSet={currentSet} />
       </div>
 
       {/* <div className="submitBtn" onClick={(e) => handleSubmit(e)}>
