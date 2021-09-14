@@ -1,7 +1,11 @@
+import { fromPairs } from 'lodash';
 import React, { useState} from 'react';
 import { connect } from 'react-redux';
 import { useLocation } from "react-router";
 import ReviewCard from '../../Components/ReviewCard/ReviewCard';
+import './ReviewScreen.css';
+
+
 
 const mapStateToProps = (state) => ({
     userData: state.userData.userData,
@@ -72,51 +76,54 @@ const ReviewScreen = ({data}) => {
     // console.log('percentage is', percentage)
     return (
         <div>
-            <h1>Review Set</h1>
-            <h4>{currentSet.setName}</h4>
-            <p>{currentSet.description}</p>
-            <hr/>
+            <h1 className='reviewTitle'>Review Set</h1>
+            <h2 className='reviewCurrTitle'>{currentSet.setName}</h2>
+            <p className='reviewCurrWords'>{currentSet.description}</p>
+            
             
             {current.map((question) => {
-                return <ReviewCard index={index} key={question.id} text={flipped ? question.answer : question.question} onClick={() => setFlip(!flipped)}/>;
+                return <ReviewCard className='flashcard' index={index} key={question.id} text={flipped ? question.answer : question.question} onClick={() => setFlip(!flipped)}/>;
             })}
             
-            <div className='reviewButtons'>
-                <div 
+            <ul className='reviewButtons'>
+                <li 
                     className='reviewWrong'
                     onClick={() => {
                         addIncorrect()
                     }}
                 >
-                    x
-                </div>
-                <div 
+                    <i className="fas fa-times-circle fa-lg"/>
+                </li>
+                <li 
                     className='reviewBack'
                     onClick={() => {
                         showPrevCard();
                     }}
                 >
-                    Prev
-                </div>
-                <div 
+                    <i className="fas fa-arrow-left"></i>
+                </li>
+                <li className='questionProgress'>
+                    {index} / {currentSet.questions.length}
+                </li>
+                <li 
                     className='reviewNext'
                     onClick={() => {
                         showNextCard();  
                     }}
                 >
-                    Next
-                </div>
-                <div
+                    <i className="fas fa-arrow-right "/>
+                </li>
+                <li
                     className='reviewCorrect'
                     onClick={() => {
                         addCorrect()
                     }}
                 >
-                    check
-                </div>
-            </div>
+                    <i className="fas fa-check-square fa-lg"/>
+                </li>
+            </ul>
             <div>
-                <div>
+                <div className='correctProgress'>
                     <Percentage percent={percent} length={currentSet.questions.length} />
                 </div>
             </div>
