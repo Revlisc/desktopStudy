@@ -14,8 +14,11 @@ const EditSetScreen = ({ data }) => {
 
   const [title, setTitle] = useState(currentSet.setName);
   const [description, setDescription] = useState(currentSet.description);
+  //store state from redux store, read state from local state. submit to redux on submit
 
-  const handleChange = (e) => {
+  //refractor methods and local state to EditSetSceen, making it a container component
+
+  const handleInfoChange = (e) => {
     e.preventDefault();
     console.log(e.target);
     if (e.target.id === "title") {
@@ -25,6 +28,15 @@ const EditSetScreen = ({ data }) => {
     }
   };
 
+  // const handleQuestionInputChange = (e) => {
+  //   e.preventDefault();
+  //   if (e.target.id === "term") {
+  //     setTerm(e.target.value);
+  //   } else {
+  //     setAnswer(e.target.value);
+  //   }
+  // };
+  //this will submit ALL changes
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -45,7 +57,7 @@ const EditSetScreen = ({ data }) => {
                   id="title"
                   name="title"
                   value={title}
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => handleInfoChange(e)}
                 />
               </label>
             </div>
@@ -57,7 +69,7 @@ const EditSetScreen = ({ data }) => {
                   id="description"
                   name="description"
                   value={description}
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => handleInfoChange(e)}
                 />
               </label>
             </div>
