@@ -13,6 +13,11 @@ export const userDataReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
       };
+    case actionTypes.SET_PERCENT:
+      return {
+        
+        percentage: action.payload
+      }
     default:
       return state;
   }

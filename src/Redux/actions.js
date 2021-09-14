@@ -9,3 +9,8 @@ export const addQuestion = (updatedSet) => ({
   type: actionTypes.ADD_QUESTION,
   payload: updatedSet,
 });
+
+export const setPercent = (percent) => ({
+    type: actionTypes.SET_PERCENT,
+    payload: percent,
+});

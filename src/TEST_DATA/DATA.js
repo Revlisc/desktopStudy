@@ -3,6 +3,7 @@ export const DATA = [
     setName: "Set 1",
     id: 0,
     description: "This is a test set",
+    percentage: 0,
     questions: [
       {
         question: "What is tha capital of Texas?",
@@ -22,6 +23,7 @@ export const DATA = [
     setName: "Set 2",
     id: 1,
     description: "This is a test set",
+    percentage: 0,
     questions: [
       {
         question: "What is my name",

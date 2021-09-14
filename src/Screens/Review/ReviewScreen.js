@@ -7,10 +7,23 @@ const mapStateToProps = (state) => ({
     userData: state.userData.userData,
 });
 
+const Percentage = ({percent, length}) => {
+    let value = (percent / length) * 100
+    console.log('current is', percent)
+    console.log('length is', length)
+    console.log('value is', value)
+    return (
+        <div>
+            <p>{value}% Correct</p>
+        </div>
+    )
+}
+
 const ReviewScreen = ({data}) => {
     
     const [flipped, setFlip] = useState(false);
     const [index, setIndex] = useState(1)
+    const [percent, setPercent] = useState(0)
     const location = useLocation();
     const { setId } = location.state;
     //filter out set being edited from all sets
@@ -21,7 +34,7 @@ const ReviewScreen = ({data}) => {
     const correct = []
 
     function showPrevCard() {
-        if (index >= 0) {
+        if ( (index - 1) > 0) {
             let newIndex = index
             newIndex--
             console.log(newIndex)
@@ -41,6 +54,8 @@ const ReviewScreen = ({data}) => {
     function addCorrect() {
         correct.push(index)
         console.log(correct)
+        setPercent(percent + 1)
+        
     }
 
     function addIncorrect() {
@@ -51,20 +66,32 @@ const ReviewScreen = ({data}) => {
     let current = currentSet.questions.filter(current => current.id === index)
     console.log(current)
     console.log(index)
+    // let percentage = correct / currentSet.questions.length;
+    // console.log('correct is ', correct)
+    // console.log('length is ', currentSet.questions.length)
+    // console.log('percentage is', percentage)
     return (
         <div>
             <h1>Review Set</h1>
-            <h5>{currentSet.setName}</h5>
+            <h4>{currentSet.setName}</h4>
             <p>{currentSet.description}</p>
             <hr/>
             
             {current.map((question) => {
-                return <ReviewCard key={question.id} text={flipped ? question.answer : question.question} onClick={() => setFlip(!flipped)}/>;
+                return <ReviewCard index={index} key={question.id} text={flipped ? question.answer : question.question} onClick={() => setFlip(!flipped)}/>;
             })}
             
-            <div>
+            <div className='reviewButtons'>
                 <div 
-                    className=''
+                    className='reviewWrong'
+                    onClick={() => {
+                        addIncorrect()
+                    }}
+                >
+                    x
+                </div>
+                <div 
+                    className='reviewBack'
                     onClick={() => {
                         showPrevCard();
                     }}
@@ -72,29 +99,25 @@ const ReviewScreen = ({data}) => {
                     Prev
                 </div>
                 <div 
-                    className=''
+                    className='reviewNext'
                     onClick={() => {
                         showNextCard();  
                     }}
                 >
                     Next
                 </div>
-            </div>
-            <div>
                 <div
-                    
+                    className='reviewCorrect'
                     onClick={() => {
                         addCorrect()
                     }}
                 >
                     check
                 </div>
-                <div
-                    onClick={() => {
-                        addIncorrect()
-                    }}
-                >
-                    x
+            </div>
+            <div>
+                <div>
+                    <Percentage percent={percent} length={currentSet.questions.length} />
                 </div>
             </div>
         </div>
