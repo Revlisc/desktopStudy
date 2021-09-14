@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addQuestion } from "../../Redux/actions";
+
 import "./AddNewQuestionComponent.css";
 
-const AddNewQuestion = ({ currentSet, addQuestion, userData, handleSubmit }) => {
+const AddNewQuestion = ({ handleSubmit }) => {
   const [term, setTerm] = useState("");
   const [definition, setdefinition] = useState("");
 
@@ -15,34 +14,6 @@ const AddNewQuestion = ({ currentSet, addQuestion, userData, handleSubmit }) => 
       setdefinition(e.target.value);
     }
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   //create copy of questions
-  //   const existingQuestions = currentSet.questions;
-  //   //create new question object
-  //   const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
-  //   //combine new question with existing questions
-  //   const updatedQuestions = existingQuestions.concat(newQuestion);
-  //   //update whole set with new questions
-  //   let updatedSet = { ...currentSet, questions: updatedQuestions };
-  //   //merge updatedSet into userData
-
-  //   const updatedState = userData.map((set) => {
-  //     if (set.id === currentSet.id) {
-  //       return updatedSet;
-  //     }
-  //     return set;
-  //   });
-  //   console.log(updatedState);
-
-  //   //dispatch action
-
-  //   addQuestion(updatedState);
-  //   //reset form
-  //   setTerm("");
-  //   setdefinition("");
-  // };
 
   return (
     <div className="questionAddForm">
@@ -79,14 +50,4 @@ const AddNewQuestion = ({ currentSet, addQuestion, userData, handleSubmit }) => 
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addQuestion: (updatedState) => dispatch(addQuestion(updatedState)),
-  };
-};
-
-const mapStateToProps = (state) => ({
-  userData: state.userData.userData,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddNewQuestion);
+export default AddNewQuestion;

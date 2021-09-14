@@ -7,17 +7,12 @@ const INITIAL_STATE = {
 
 export const userDataReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case actionTypes.ADD_QUESTION:
+    case actionTypes.UPDATE_SET:
       return {
         ...state,
         userData: action.payload,
       };
 
-    case actionTypes.EDIT_QUESTION:
-      return {
-        ...state,
-        userData: action.payload,
-      };
     default:
       return state;
   }
