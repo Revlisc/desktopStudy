@@ -9,6 +9,7 @@ import SignUpPage from "./Screens/SignUpPage/SignUpPage";
 import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import EditSetScreen from "./Screens/EditSetScreen/EditSetScreen";
 import Navbar from "../src/Components/Navbar/Navbar";
+import ReviewScreen from "./Screens/Review/ReviewScreen";
 
 //made constructor for use of this.state
 class App extends Component {
@@ -79,7 +80,12 @@ class App extends Component {
           />
 
           {/* route for EditSetScreen */}
-          <Route exact path="/editSet" render={() => <EditSetScreen />} />
+          <Route
+            exact
+            path="/editSet"
+            render={() => <EditSetScreen data={userData} />}
+          />
+          <Route exact path='/testSet' render={() => <ReviewScreen data={userData} />}/>
         </Switch>
       </Fragment>
     );
