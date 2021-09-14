@@ -9,7 +9,8 @@ class Navbar extends Component {
         <ul className="nav-links-left">
           <li>
             <NavLink exact to="/" className="nav-logo">
-              StudyApp <i className="fa fa-book"></i>
+              Study<span style={{ fontWeight: "300" }}>App </span>
+              <i className="fa fa-book"></i>
             </NavLink>
           </li>
 
