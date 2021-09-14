@@ -1,4 +1,5 @@
-.Navbar {
+.Navbar,
+.NavbarLogin {
   background-color: #3e3d57;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -39,27 +40,61 @@ li {
   padding-left: 2rem;
 }
 
-.nav-links {
+.nav-link {
   position: relative;
   top: 8px;
 }
 
-.nav-links-left {
+.nav-links {
   padding-left: 0.3em;
 }
 
 .navcreatebtn-container {
   background-color: #6c61eb;
   padding: 3px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   text-align: center;
   border-radius: 13px;
+}
+
+.fa-book {
+  font-style: normal;
 }
 
 .fa-plus {
   text-align: center;
   padding-bottom: 40px;
   position: relative;
-  bottom: 2px;
+  bottom: 1px;
+}
+
+.profile-placeholder {
+  height: 50px;
+  width: 50px;
+}
+
+.nav-right {
+  float: right;
+  padding-right: 2rem;
+}
+
+.left-nav-items {
+  margin-left: 2rem;
+}
+
+.nav-item {
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+/* Responsiveness */
+.menu-btn {
+  display: none;
+}
+
+@media (min-width: 48em) {
+  .menu-icon {
+    display: none;
+  }
 }
