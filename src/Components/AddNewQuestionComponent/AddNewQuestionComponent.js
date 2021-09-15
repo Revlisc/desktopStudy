@@ -41,7 +41,14 @@ const AddNewQuestion = ({ handleSubmit }) => {
           <p className="inputLabel"> Definition</p>
         </div> */}
         <div>
-          <button type="submit" onClick={(e) => handleSubmit(e, term, definition)}>
+          <button
+            type="submit"
+            onClick={(e) => {
+              handleSubmit(e, term, definition);
+              setTerm("");
+              setdefinition("");
+            }}
+          >
             submit
           </button>
         </div>

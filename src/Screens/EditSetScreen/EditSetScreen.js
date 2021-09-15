@@ -76,6 +76,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
       return set;
     });
     updateSet(updatedState);
+    //<Redirect to="/home" />;
   };
   return (
     <div>
