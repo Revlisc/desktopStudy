@@ -1,0 +1,82 @@
+.reviewButtons {
+    display: inline-block;
+    color: black;
+    margin: 0 auto;
+    display: table;
+}
+
+.reviewWrong {
+    display: inline-block;
+    color: red;
+    margin: auto;
+    margin-right: 2rem;
+}
+
+.reviewBack {
+    display: inline-block;
+    color: black;
+    margin: auto;
+}
+
+.reviewNext {
+    display: inline-block;
+    color: black;
+    margin: auto;
+}
+
+.reviewCorrect {
+    display: inline-block;
+    color: green;
+    margin: auto;
+    margin-left: 2rem;
+}
+
+.questionProgress {
+    color: black;
+    
+}
+
+.correctProgress {
+    margin: 0 auto;
+    display: table;
+}
+
+.flashcard {
+  width: 50rem;
+  height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  box-shadow: 2px 3px 23px rgba(0,0,0,.1);
+  padding: 1em 3em;
+  transform-style: preserve-3d;
+  margin-top: 3rem;
+  transition: 0.2s;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}
+
+.cardNo {
+    position: absolute;
+    top: 1rem;
+    right: 4rem;
+}
+
+.reviewTitle {
+    padding-left: 2rem;
+    text-decoration-line:underline;
+}
+
+.reviewCurrTitle {
+    padding-left: 2rem;
+
+}
+
+.reviewCurrWords {
+    
+    border-bottom: 2px solid black;
+    width: 95%;
+    margin: auto;
+}
