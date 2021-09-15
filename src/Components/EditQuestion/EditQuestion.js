@@ -1,6 +1,6 @@
 import React from "react";
 
-const EditQuestion = ({ onChangeHandler, question }) => {
+const EditQuestion = ({ onChangeHandler, deleteHandler, question }) => {
   return (
     <div className="questionAddForm">
       <form>
@@ -21,6 +21,10 @@ const EditQuestion = ({ onChangeHandler, question }) => {
           value={question.answer}
           onChange={(e) => onChangeHandler(e, question.id)}
         />
+
+        <div onClick={(e) => deleteHandler(e, question.id)} className="deleteBtn">
+          Delete this question
+        </div>
 
         {/* <div className="labels">
         <p className="inputLabel">Term</p>

@@ -14,9 +14,6 @@ const EditSetScreen = ({ userData, updateSet }) => {
   let setFromProps = userData.filter((set) => set.id === setId)[0];
 
   const [currentSet, setCurrentSet] = useState(setFromProps);
-  // const [title, setTitle] = useState(currentSet.setName);
-  // const [description, setDescription] = useState(currentSet.description);
-  //refractor title and descirption into currentSet
 
   const handleInfoChange = (e) => {
     e.preventDefault();
@@ -25,12 +22,6 @@ const EditSetScreen = ({ userData, updateSet }) => {
       ...currentSet,
       [e.target.id]: e.target.value,
     });
-
-    // if (e.target.id === "title") {
-    //   setTitle(e.target.value);
-    // } else {
-    //   setDescription(e.target.value);
-    // }
   };
 
   const handleNewQuestionSubmit = (e, term, definition) => {
@@ -39,28 +30,26 @@ const EditSetScreen = ({ userData, updateSet }) => {
     //add to currentSet in local state
     const questions = currentSet.questions;
     const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
-
     const updatedQuestions = questions.concat(newQuestion);
-
     //merge new questions into new set
     const updatedSet = { ...currentSet, questions: updatedQuestions };
-
     setCurrentSet(updatedSet);
+  };
+
+  const handleQuestionDelete = (e, id) => {
+    e.preventDefault();
+    const newQuestionSet = currentSet.questions.filter((question) => question.id !== id);
+    setCurrentSet({ ...currentSet, questions: newQuestionSet });
   };
 
   const handleQuestionInputChange = (e, id) => {
     e.preventDefault();
-
     //we need to update individual questions inside of local state
-
     //go inside state, update respective question
     const questions = currentSet.questions;
-
     const questionToChange = questions.filter((question) => question.id === id)[0];
-
     //update question property on questionToChange
     const updatedQuestion = { ...questionToChange, [e.target.id]: e.target.value };
-
     //map over questions, change respective question
     const updatedQuestions = questions.map((question) => {
       if (question.id === id) {
@@ -71,15 +60,14 @@ const EditSetScreen = ({ userData, updateSet }) => {
 
     //then merge into state
     const updatedSet = { ...currentSet, questions: updatedQuestions };
-
     setCurrentSet(updatedSet);
   };
+
   //this will submit ALL changes
   const handleSubmit = (e) => {
     e.preventDefault();
     //map over global state, change respective set, dispatch
     const globalState = userData;
-
     //change respective set
     const updatedState = globalState.map((set) => {
       if (set.id === currentSet.id) {
@@ -87,7 +75,6 @@ const EditSetScreen = ({ userData, updateSet }) => {
       }
       return set;
     });
-
     updateSet(updatedState);
   };
   return (
@@ -135,6 +122,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
                   currentSet={currentSet}
                   question={question}
                   onChangeHandler={handleQuestionInputChange}
+                  deleteHandler={handleQuestionDelete}
                 />
               );
             })}
