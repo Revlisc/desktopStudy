@@ -1,4 +1,4 @@
-import { fromPairs } from 'lodash';
+
 import React, { useState} from 'react';
 import { connect } from 'react-redux';
 import { useLocation } from "react-router";
@@ -12,18 +12,18 @@ const mapStateToProps = (state) => ({
 });
 
 const Percentage = ({percent, length}) => {
-    let value = (percent / length) * 100
+    let value = Math.floor((percent / length) * 100)
     console.log('current is', percent)
     console.log('length is', length)
     console.log('value is', value)
     return (
         <div>
-            <p>{value}% Correct</p>
+            <p>You know {value}% of the set!</p>
         </div>
     )
 }
 
-const ReviewScreen = ({data}) => {
+const ReviewScreen = ({userData}) => {
     
     const [flipped, setFlip] = useState(false);
     const [index, setIndex] = useState(1)
@@ -31,7 +31,7 @@ const ReviewScreen = ({data}) => {
     const location = useLocation();
     const { setId } = location.state;
     //filter out set being edited from all sets
-    let currentSet = data.filter((set) => set.id === setId)[0];
+    let currentSet = userData.filter((set) => set.id === setId)[0];
     //const current = currentSet.questions[index]
 
     const wrong = []
@@ -67,9 +67,15 @@ const ReviewScreen = ({data}) => {
         console.log(wrong)
     }
     
-    let current = currentSet.questions.filter(current => current.id === index)
+    let current = currentSet.questions.filter((question, idx) => { 
+        if((idx + 1) === index) {
+            return question
+        }
+        return;
+    })
     console.log(current)
     console.log(index)
+    
     // let percentage = correct / currentSet.questions.length;
     // console.log('correct is ', correct)
     // console.log('length is ', currentSet.questions.length)
