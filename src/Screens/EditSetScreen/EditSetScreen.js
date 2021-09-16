@@ -18,10 +18,13 @@ const EditSetScreen = ({ userData, updateSet }) => {
   const [fillButton, setFillButton] = useState(false);
   const [showCheckMark, setShowCheckmark] = useState(false);
 
+  //change showCheckmark back to false after 5 seconds
   useEffect(() => {
-    setTimeout(() => {
+    const id = window.setTimeout(() => {
       setShowCheckmark(false);
     }, 5000);
+    //cleanup function
+    return () => window.clearTimeout(id);
   }, [showCheckMark]);
 
   const handleInfoChange = (e) => {
