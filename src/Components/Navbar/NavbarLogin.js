@@ -15,8 +15,7 @@ class NavbarLogin extends Component {
 
         <ul className="login-link">
           <li className="login-item">
-            <NavLink exact to="/profile" className="nav-link login-btn">
-              {" "}
+            <NavLink exact to="/login" className="nav-link login-btn">
               Login
             </NavLink>
           </li>
