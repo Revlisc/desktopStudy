@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import AddNewQuestion from "../../Components/AddNewQuestionComponent/AddNewQuestionComponent";
 import EditQuestion from "../../Components/EditQuestion/EditQuestion";
 import { updateSet } from "../../Redux/actions";
+
 import "./EditSetScreen.css";
 
 const EditSetScreen = ({ userData, updateSet }) => {
@@ -14,6 +15,14 @@ const EditSetScreen = ({ userData, updateSet }) => {
   let setFromProps = userData.filter((set) => set.id === setId)[0];
 
   const [currentSet, setCurrentSet] = useState(setFromProps);
+  const [fillButton, setFillButton] = useState(false);
+  const [showCheckMark, setShowCheckmark] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowCheckmark(false);
+    }, 5000);
+  }, [showCheckMark]);
 
   const handleInfoChange = (e) => {
     e.preventDefault();
@@ -22,6 +31,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
       ...currentSet,
       [e.target.id]: e.target.value,
     });
+    setFillButton(true);
   };
 
   const handleNewQuestionSubmit = (e, term, definition) => {
@@ -34,12 +44,14 @@ const EditSetScreen = ({ userData, updateSet }) => {
     //merge new questions into new set
     const updatedSet = { ...currentSet, questions: updatedQuestions };
     setCurrentSet(updatedSet);
+    setFillButton(true);
   };
 
   const handleQuestionDelete = (e, id) => {
     e.preventDefault();
     const newQuestionSet = currentSet.questions.filter((question) => question.id !== id);
     setCurrentSet({ ...currentSet, questions: newQuestionSet });
+    setFillButton(true);
   };
 
   const handleQuestionInputChange = (e, id) => {
@@ -61,6 +73,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
     //then merge into state
     const updatedSet = { ...currentSet, questions: updatedQuestions };
     setCurrentSet(updatedSet);
+    setFillButton(true);
   };
 
   //this will submit ALL changes
@@ -76,6 +89,8 @@ const EditSetScreen = ({ userData, updateSet }) => {
       return set;
     });
     updateSet(updatedState);
+    setFillButton(false);
+    setShowCheckmark(true);
   };
   return (
     <div>
@@ -134,9 +149,19 @@ const EditSetScreen = ({ userData, updateSet }) => {
 
         <AddNewQuestion handleSubmit={handleNewQuestionSubmit} currentSet={currentSet} />
         <div className="submitBtn-wrapper">
-          <button className="submitBtn" onClick={(e) => handleSubmit(e)}>
-            Submit Changes
-          </button>
+          {!showCheckMark ? (
+            <button
+              className={`submitBtn ${fillButton ? "fillBtn" : ""}`}
+              onClick={(e) => handleSubmit(e)}
+            >
+              Submit Changes
+            </button>
+          ) : (
+            <div className="save-confirmation">
+              <p>Changes Saved</p>
+              <i className="fa fa-check"></i>
+            </div>
+          )}
         </div>
       </div>
     </div>
