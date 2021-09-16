@@ -13,7 +13,7 @@ const HomeScreen = ({ data }) => {
       <div className="homeScreenContainer">
         {data.map((set) => {
           console.log(set);
-          return <SetButton key={set.id} set={set} />; //add onClick handler to switch to EditSetScreen
+          return <SetButton key={set.id} set={set} />;
         })}
       </div>
     </div>

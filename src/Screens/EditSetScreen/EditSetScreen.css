@@ -16,12 +16,49 @@
   line-height: 15px;
 }
 
-.formContainer_editScreen .formItem {
-  margin: 15px 25px 15px 0;
+/* .formContainer_editScreen .formItem {
+  margin: 15px 30px 15px 0;
+} */
+input.form-input {
+  width: 100%;
+  padding: 9px 0 9px 10px;
+  margin: 10px 0;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 7px;
 }
 
-.formItem input {
-  padding: 15px 15px;
-  width: 100%;
-  border: none;
+.edit-question {
+  /* edit question set to relative to position exit button */
+  position: relative;
+}
+.submitBtn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.submitBtn {
+  margin: 15px 0;
+  padding: 10px;
+  border-style: none;
+  border-radius: 7px;
+  opacity: 0;
+  transition: all 500ms;
+}
+
+.submitBtn:hover {
+  cursor: pointer;
+}
+
+.fillBtn {
+  opacity: 1;
+  background-color: #6c61eb;
+}
+
+.save-confirmation {
+  display: flex;
+  align-items: center;
+}
+
+i.fa-check {
+  margin-left: 10px;
 }

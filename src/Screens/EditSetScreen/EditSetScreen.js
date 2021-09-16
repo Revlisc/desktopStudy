@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import AddNewQuestion from "../../Components/AddNewQuestionComponent/AddNewQuestionComponent";
 import EditQuestion from "../../Components/EditQuestion/EditQuestion";
 import { updateSet } from "../../Redux/actions";
+
 import "./EditSetScreen.css";
 
 const EditSetScreen = ({ userData, updateSet }) => {
@@ -14,9 +15,14 @@ const EditSetScreen = ({ userData, updateSet }) => {
   let setFromProps = userData.filter((set) => set.id === setId)[0];
 
   const [currentSet, setCurrentSet] = useState(setFromProps);
-  // const [title, setTitle] = useState(currentSet.setName);
-  // const [description, setDescription] = useState(currentSet.description);
-  //refractor title and descirption into currentSet
+  const [fillButton, setFillButton] = useState(false);
+  const [showCheckMark, setShowCheckmark] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowCheckmark(false);
+    }, 5000);
+  }, [showCheckMark]);
 
   const handleInfoChange = (e) => {
     e.preventDefault();
@@ -25,12 +31,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
       ...currentSet,
       [e.target.id]: e.target.value,
     });
-
-    // if (e.target.id === "title") {
-    //   setTitle(e.target.value);
-    // } else {
-    //   setDescription(e.target.value);
-    // }
+    setFillButton(true);
   };
 
   const handleNewQuestionSubmit = (e, term, definition) => {
@@ -38,29 +39,29 @@ const EditSetScreen = ({ userData, updateSet }) => {
 
     //add to currentSet in local state
     const questions = currentSet.questions;
-    const newQuestion = { question: term, answer: definition, id: questions.length };
-
+    const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
     const updatedQuestions = questions.concat(newQuestion);
-
     //merge new questions into new set
     const updatedSet = { ...currentSet, questions: updatedQuestions };
-
     setCurrentSet(updatedSet);
+    setFillButton(true);
+  };
+
+  const handleQuestionDelete = (e, id) => {
+    e.preventDefault();
+    const newQuestionSet = currentSet.questions.filter((question) => question.id !== id);
+    setCurrentSet({ ...currentSet, questions: newQuestionSet });
+    setFillButton(true);
   };
 
   const handleQuestionInputChange = (e, id) => {
     e.preventDefault();
-
     //we need to update individual questions inside of local state
-
     //go inside state, update respective question
     const questions = currentSet.questions;
-
     const questionToChange = questions.filter((question) => question.id === id)[0];
-
     //update question property on questionToChange
     const updatedQuestion = { ...questionToChange, [e.target.id]: e.target.value };
-
     //map over questions, change respective question
     const updatedQuestions = questions.map((question) => {
       if (question.id === id) {
@@ -71,15 +72,15 @@ const EditSetScreen = ({ userData, updateSet }) => {
 
     //then merge into state
     const updatedSet = { ...currentSet, questions: updatedQuestions };
-
     setCurrentSet(updatedSet);
+    setFillButton(true);
   };
+
   //this will submit ALL changes
   const handleSubmit = (e) => {
     e.preventDefault();
     //map over global state, change respective set, dispatch
     const globalState = userData;
-
     //change respective set
     const updatedState = globalState.map((set) => {
       if (set.id === currentSet.id) {
@@ -87,8 +88,9 @@ const EditSetScreen = ({ userData, updateSet }) => {
       }
       return set;
     });
-
     updateSet(updatedState);
+    setFillButton(false);
+    setShowCheckmark(true);
   };
   return (
     <div>
@@ -103,6 +105,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
             <div className="formItem">
               <label for="text">
                 <input
+                  className="form-input"
                   type="text"
                   id="setName"
                   name="setName"
@@ -115,6 +118,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
             <div className="formItem">
               <label>
                 <input
+                  className="form-input"
                   type="textarea"
                   id="description"
                   name="description"
@@ -127,25 +131,38 @@ const EditSetScreen = ({ userData, updateSet }) => {
         </div>
 
         <div className="questionListContainer">
-          <div>
-            {currentSet.questions.map((question) => {
-              return (
+          {currentSet.questions.map((question) => {
+            return (
+              // edit question div set to relative to position delete button
+              <div className="edit-question">
                 <EditQuestion
                   key={question.id}
                   currentSet={currentSet}
                   question={question}
                   onChangeHandler={handleQuestionInputChange}
+                  deleteHandler={handleQuestionDelete}
                 />
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
 
         <AddNewQuestion handleSubmit={handleNewQuestionSubmit} currentSet={currentSet} />
-      </div>
-
-      <div className="submitBtn" onClick={(e) => handleSubmit(e)}>
-        Submit Changes
+        <div className="submitBtn-wrapper">
+          {!showCheckMark ? (
+            <button
+              className={`submitBtn ${fillButton ? "fillBtn" : ""}`}
+              onClick={(e) => handleSubmit(e)}
+            >
+              Submit Changes
+            </button>
+          ) : (
+            <div className="save-confirmation">
+              <p>Changes Saved</p>
+              <i className="fa fa-check"></i>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

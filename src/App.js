@@ -12,7 +12,6 @@ import NavbarLogin from "../src/Components/Navbar/NavbarLogin";
 import Navbar from "../src/Components/Navbar/Navbar";
 import ReviewScreen from "./Screens/Review/ReviewScreen";
 
-
 //made constructor for use of this.state
 class App extends Component {
   // constructor(props) {
@@ -82,12 +81,8 @@ class App extends Component {
           />
 
           {/* route for EditSetScreen */}
-          <Route
-            exact
-            path="/editSet"
-            render={() => <EditSetScreen data={userData} />}
-          />
-          <Route exact path='/testSet' render={() => <ReviewScreen  />}/>
+          <Route exact path="/editSet" render={() => <EditSetScreen />} />
+          <Route exact path="/testSet" render={() => <ReviewScreen />} />
         </Switch>
       </Fragment>
     );

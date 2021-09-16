@@ -1,32 +1,72 @@
-.questionAddForm {
+.question-edit-form {
   background-color: white;
-  padding: 25px 0;
+  margin: 17px 0 0 0;
   border-radius: 7px;
+  position: relative;
 }
-.questionAddForm form {
+
+form.edit-question {
   display: flex;
+  justify-content: space-between;
+  padding-top: 27px;
 }
-
-.questionAddForm input {
-  font-size: 2rem;
-  flex: 1;
-  max-width: 50%;
-
+input.form-question-input {
+  width: 100%;
   border: none;
-  margin: 0 15px 0 10px;
   border-bottom: 1px solid black;
+  font-size: 1.6rem;
 }
 
-input:focus {
-  border: none;
+input.form-question-input:focus {
+  outline: none;
 }
 
-.labels {
-  display: flex;
+.form-item {
+  flex-basis: 100%;
+  margin: 10px 9px 0 9px;
 }
 
-.inputLabel {
-  flex: 1;
+.info-text {
+  line-height: 1;
+  color: rgb(78, 78, 78);
+  padding: 10px 0;
+}
 
-  margin: 10px 15px 0 10px;
+.deleteBtn {
+  align-self: center;
+}
+i.fa-times {
+  color: red;
+  position: absolute;
+  top: 10%;
+  right: 5px;
+  font-size: 1.7rem;
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+i.fa-plus {
+  color: green;
+  position: absolute;
+  top: 10%;
+  right: 5px;
+  font-size: 1.7rem;
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+i.fa:hover {
+  cursor: pointer;
+}
+
+i.show {
+  opacity: 1;
+}
+
+.add-new-text {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  font-size: 0.8rem;
+  color: rgba(108, 97, 235, 0.4);
 }

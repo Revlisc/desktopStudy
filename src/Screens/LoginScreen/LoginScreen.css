@@ -1,23 +1,27 @@
 .signInBg {
-    background-color: #F5F8FF;
-    
+  background-color: #f5f8ff;
 }
 
 .loginFormContainer {
-    background-color: white;
-    margin-left: 3rem;
-    max-width: 20rem;
-    width: 100%;
-    display: inline-block;
+  background-color: white;
+  margin-left: 3rem;
+  max-width: 20rem;
+  width: 100%;
+  display: inline-block;
 }
 
-input {
-    width: 90%;
-    margin-left: 1rem;
+input.userbar {
+  width: 90%;
+  margin-left: 1rem;
+}
+
+input.text-input {
+  width: 90%;
+  margin-left: 1rem;
 }
 
 .submitBtnLogin {
-  background-color: #6C61EB; 
+  background-color: #6c61eb;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -31,23 +35,22 @@ input {
 }
 
 .loginTitle {
-    padding-left: 3rem;
+  padding-left: 3rem;
 }
 
 .loginSubtitle {
-    padding-left: 3rem;
+  padding-left: 3rem;
 }
 
 .loginHeader {
-    margin-bottom: 0;
-    margin-left: 1rem;
+  margin-bottom: 0;
+  margin-left: 1rem;
 }
 
 .introPic {
-    margin: 0;
-    
+  margin: 0;
 }
 
 .loginDiv {
-    display: flex;
+  display: flex;
 }
