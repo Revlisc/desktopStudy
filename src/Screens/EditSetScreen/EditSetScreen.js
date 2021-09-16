@@ -76,7 +76,6 @@ const EditSetScreen = ({ userData, updateSet }) => {
       return set;
     });
     updateSet(updatedState);
-    //<Redirect to="/home" />;
   };
   return (
     <div>
@@ -91,6 +90,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
             <div className="formItem">
               <label for="text">
                 <input
+                  className="form-input"
                   type="text"
                   id="setName"
                   name="setName"
@@ -103,6 +103,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
             <div className="formItem">
               <label>
                 <input
+                  className="form-input"
                   type="textarea"
                   id="description"
                   name="description"
@@ -115,9 +116,10 @@ const EditSetScreen = ({ userData, updateSet }) => {
         </div>
 
         <div className="questionListContainer">
-          <div>
-            {currentSet.questions.map((question) => {
-              return (
+          {currentSet.questions.map((question) => {
+            return (
+              // edit question div set to relative to position delete button
+              <div className="edit-question">
                 <EditQuestion
                   key={question.id}
                   currentSet={currentSet}
@@ -125,16 +127,17 @@ const EditSetScreen = ({ userData, updateSet }) => {
                   onChangeHandler={handleQuestionInputChange}
                   deleteHandler={handleQuestionDelete}
                 />
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
 
         <AddNewQuestion handleSubmit={handleNewQuestionSubmit} currentSet={currentSet} />
-      </div>
-
-      <div className="submitBtn" onClick={(e) => handleSubmit(e)}>
-        Submit Changes
+        <div className="submitBtn-wrapper">
+          <button className="submitBtn" onClick={(e) => handleSubmit(e)}>
+            Submit Changes
+          </button>
+        </div>
       </div>
     </div>
   );

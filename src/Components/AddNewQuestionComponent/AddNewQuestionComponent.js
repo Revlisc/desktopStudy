@@ -5,6 +5,7 @@ import "./AddNewQuestionComponent.css";
 const AddNewQuestion = ({ handleSubmit }) => {
   const [term, setTerm] = useState("");
   const [definition, setdefinition] = useState("");
+  const [showAddBtn, setShowAddBtn] = useState(false);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -16,43 +17,48 @@ const AddNewQuestion = ({ handleSubmit }) => {
   };
 
   return (
-    <div className="questionAddForm">
-      <form>
-        <input
-          type="text"
-          id="term"
-          name="term"
-          placeholder="term"
-          value={term}
-          onChange={(e) => handleChange(e)}
-        />
+    <div
+      className="question-edit-form"
+      onMouseEnter={() => setShowAddBtn(!showAddBtn)}
+      onMouseLeave={() => setShowAddBtn(!showAddBtn)}
+    >
+      <form className="edit-question">
+        <div className="form-item">
+          <input
+            className="form-question-input"
+            type="text"
+            id="term"
+            name="term"
+            placeholder="term"
+            value={term}
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
 
-        <input
-          type="text"
-          id="definition"
-          name="definition"
-          placeholder="definition"
-          value={definition}
-          onChange={(e) => handleChange(e)}
-        />
+        <div className="form-item">
+          <input
+            className="form-question-input"
+            type="text"
+            id="definition"
+            name="definition"
+            placeholder="definition"
+            value={definition}
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
 
-        {/* <div className="labels">
-          <p className="inputLabel">Term</p>
-          <p className="inputLabel"> Definition</p>
-        </div> */}
         <div>
-          <button
-            type="submit"
+          <i
+            className={`fa fa-plus ${showAddBtn ? "show" : ""}`}
             onClick={(e) => {
               handleSubmit(e, term, definition);
               setTerm("");
               setdefinition("");
             }}
-          >
-            submit
-          </button>
+          ></i>
         </div>
       </form>
+      <div className="add-new-text">Add a new question </div>
     </div>
   );
 };
