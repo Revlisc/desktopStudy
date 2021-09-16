@@ -1,21 +1,53 @@
 .signInBg {
     background-color: #F5F8FF;
+    
 }
 
-.formContainer {
+.loginFormContainer {
     background-color: white;
     margin-left: 3rem;
-    width: 15rem;
+    max-width: 20rem;
+    width: 100%;
+    display: inline-block;
 }
 
-.submitBtnSignIn {
-  background-color: #6C61EB; /* Green */
+input {
+    width: 90%;
+    margin-left: 1rem;
+}
+
+.submitBtnLogin {
+  background-color: #6C61EB; 
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  width: 100%;
+  width: 80%;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  border-radius: 1rem;
+}
+
+.loginTitle {
+    padding-left: 3rem;
+}
+
+.loginSubtitle {
+    padding-left: 3rem;
+}
+
+.loginHeader {
+    margin-bottom: 0;
+    margin-left: 1rem;
+}
+
+.introPic {
+    margin: 0;
+    
+}
+
+.loginDiv {
+    display: flex;
 }

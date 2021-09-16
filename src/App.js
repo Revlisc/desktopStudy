@@ -87,7 +87,7 @@ class App extends Component {
             path="/editSet"
             render={() => <EditSetScreen data={userData} />}
           />
-          <Route exact path='/testSet' render={() => <ReviewScreen data={userData} />}/>
+          <Route exact path='/testSet' render={() => <ReviewScreen  />}/>
         </Switch>
       </Fragment>
     );

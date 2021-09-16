@@ -38,7 +38,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
 
     //add to currentSet in local state
     const questions = currentSet.questions;
-    const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
+    const newQuestion = { question: term, answer: definition, id: questions.length };
 
     const updatedQuestions = questions.concat(newQuestion);
 
