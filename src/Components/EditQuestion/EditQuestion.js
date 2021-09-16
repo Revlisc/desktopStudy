@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import "./EditQuestion.css";
 
-const EditQuestion = ({ onChangeHandler, question, handleQuestionDelete }) => {
+const EditQuestion = ({ onChangeHandler, question, deleteHandler }) => {
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
   console.log(showDeleteBtn);
   return (
     <div
       className="question-edit-form"
-      onMouseEnter={() => setShowDeleteBtn(!showDeleteBtn)}
-      onMouseLeave={() => setShowDeleteBtn(!showDeleteBtn)}
+      onMouseEnter={() => setShowDeleteBtn(true)}
+      onMouseLeave={() => setShowDeleteBtn(false)}
     >
       <form className="edit-question">
         <div className="form-item">
@@ -38,7 +38,7 @@ const EditQuestion = ({ onChangeHandler, question, handleQuestionDelete }) => {
         </div>
       </form>
       <i
-        onClick={(e) => handleQuestionDelete(e, question.id)}
+        onClick={(e) => deleteHandler(e, question.id)}
         className={`fa fa-times ${showDeleteBtn ? "show" : ""}`}
       ></i>
     </div>

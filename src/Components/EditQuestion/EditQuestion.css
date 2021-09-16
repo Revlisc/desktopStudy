@@ -18,7 +18,7 @@ input.form-question-input {
 }
 
 input.form-question-input:focus {
-  border: none;
+  outline: none;
 }
 
 .form-item {

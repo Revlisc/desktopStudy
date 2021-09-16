@@ -19,8 +19,8 @@ const AddNewQuestion = ({ handleSubmit }) => {
   return (
     <div
       className="question-edit-form"
-      onMouseEnter={() => setShowAddBtn(!showAddBtn)}
-      onMouseLeave={() => setShowAddBtn(!showAddBtn)}
+      onMouseEnter={() => setShowAddBtn(true)}
+      onMouseLeave={() => setShowAddBtn(false)}
     >
       <form className="edit-question">
         <div className="form-item">
