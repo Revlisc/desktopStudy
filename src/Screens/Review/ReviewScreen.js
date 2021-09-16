@@ -66,7 +66,7 @@ const ReviewScreen = ({ userData }) => {
     if (idx + 1 === index) {
       return question;
     }
-    return;
+    return null;
   });
   console.log(current);
   console.log(index);
