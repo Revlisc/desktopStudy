@@ -1,22 +1,70 @@
 .signInBg {
-    background-color: #F5F8FF;
+  background-color: #f5f8ff;
 }
 
 .formContainer {
-    background-color: white;
-    margin-left: 3rem;
-    width: 15rem;
+  background-color: white;
+  margin-left: 3rem;
+  max-width: 20rem;
+  min-width: 20rem;
+  width: 100%;
+  display: inline-block;
+}
+
+input.userbar {
+  width: 90%;
+  margin-left: 1rem;
+}
+
+input.text-input {
+  width: 90%;
+  margin-left: 1rem;
 }
 
 .submitBtnSignIn {
-  background-color: #6C61EB; /* Green */
+  background-color: #6c61eb;
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  width: 100%;
+  width: 80%;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+}
+
+.signUpTitle {
+  padding-left: 3rem;
+}
+
+.signUpSubtitle {
+  padding-left: 3rem;
+}
+
+.signUpHeader {
+  margin-bottom: 0;
+  margin-left: 1rem;
+}
+
+.introPic {
+  margin-left: 10rem;
+  display:inline-flex;
+}
+
+.signUpDiv {
+  display: flex;
+}
+
+.loginHere {
+  display: inline-block;
+  color: #6c61eb;
+  font-size: medium;
+  
+}
+
+.alreadyUser {
+  text-align: center;
 }
 
