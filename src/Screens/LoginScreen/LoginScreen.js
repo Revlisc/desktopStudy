@@ -87,8 +87,8 @@ class LoginScreen extends Component {
                         </form>
                 
                     </div>
-                    <div>
-                        <img className='introPic' src={intropic} alt='intro graphic'/>
+                    <div className='introPic'>
+                        <img src={intropic} alt='intro graphic'/>
                     </div>
                 </div>
             </div>
