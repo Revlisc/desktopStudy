@@ -5,9 +5,11 @@
 .loginFormContainer {
   background-color: white;
   margin-left: 3rem;
-  max-width: 20rem;
+  max-width: 30rem;
+  min-width: 25rem;
   width: 100%;
-  display: inline-block;
+  display:inline-block;
+  border-radius: 1rem;
 }
 
 input.userbar {
@@ -48,7 +50,9 @@ input.text-input {
 }
 
 .introPic {
-  margin: 0;
+  margin-left: 10rem;
+  display:inline-flex;
+  
 }
 
 .loginDiv {

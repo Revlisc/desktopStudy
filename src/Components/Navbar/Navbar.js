@@ -2,13 +2,21 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import placeholder from "./placeholder.png";
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => ({
+  userData: state.userData.UserData,
+  currentUser: state.user.currentUser,
+})
 
 class Navbar extends Component {
+  
   render() {
+    const { userData, currentUser} = this.props
     return (
       <nav className="Navbar sticky">
         <li>
-          <NavLink exact to="/home" className="nav-logo">
+          <NavLink to={{ pathname: '/login', state: { currentUser: currentUser, userData: userData}}} className="nav-logo">
             Study<span style={{ fontWeight: "300" }}>App </span>
             <i className="fa fa-book"></i>
           </NavLink>
@@ -20,7 +28,7 @@ class Navbar extends Component {
         <ul className="nav-links">
           <div className="left-nav-items">
             <li className="nav-item">
-              <NavLink exact to="/home" className="nav-link">
+              <NavLink exact to="/" className="nav-link">
                 Your Sets
               </NavLink>
             </li>
@@ -53,4 +61,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);
