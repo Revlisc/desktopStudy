@@ -12,6 +12,11 @@ export const userDataReducer = (state = INITIAL_STATE, action) => {
         ...state,
         userData: action.payload,
       };
+    case actionTypes.CREATE_SET:
+      return {
+        ...state,
+        userData: state.userData.concat(action.payload),
+      };
     default:
       return state;
   }

@@ -11,6 +11,7 @@ import EditSetScreen from "./Screens/EditSetScreen/EditSetScreen";
 import NavbarLogin from "../src/Components/Navbar/NavbarLogin";
 import Navbar from "../src/Components/Navbar/Navbar";
 import ReviewScreen from "./Screens/Review/ReviewScreen";
+import AddSetScreen from "./Screens/AddSetScreen/AddSetScreen";
 
 //made constructor for use of this.state
 class App extends Component {
@@ -70,7 +71,7 @@ class App extends Component {
                   to="/home"
                   render={() => (
                     <div className="">
-                      <HomeScreen data={userData} />
+                      <HomeScreen />
                     </div>
                   )}
                 />
@@ -81,7 +82,9 @@ class App extends Component {
           />
 
           {/* route for EditSetScreen */}
+          <Route exact path="/home" render={() => <HomeScreen />} />
           <Route exact path="/editSet" render={() => <EditSetScreen />} />
+          <Route exact path="/addSet" render={() => <AddSetScreen />} />
           <Route exact path="/testSet" render={() => <ReviewScreen />} />
         </Switch>
       </Fragment>

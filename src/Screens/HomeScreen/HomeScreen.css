@@ -13,3 +13,8 @@
   /* line height for underline spacing */
   line-height: 15px;
 }
+
+i.fa.fa-plus.add-set-btn {
+  opacity: 1;
+  position: static;
+}

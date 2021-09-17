@@ -3,7 +3,7 @@ import "./EditQuestion.css";
 
 const EditQuestion = ({ onChangeHandler, question, deleteHandler }) => {
   const [showDeleteBtn, setShowDeleteBtn] = useState(false);
-  console.log(showDeleteBtn);
+
   return (
     <div
       className="question-edit-form"

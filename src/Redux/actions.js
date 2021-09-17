@@ -11,6 +11,11 @@ export const updateSet = (updatedState) => ({
 });
 
 export const setPercent = (percent) => ({
-    type: actionTypes.SET_PERCENT,
-    payload: percent,
+  type: actionTypes.SET_PERCENT,
+  payload: percent,
+});
+
+export const createSet = (newSet) => ({
+  type: actionTypes.CREATE_SET,
+  payload: newSet,
 });

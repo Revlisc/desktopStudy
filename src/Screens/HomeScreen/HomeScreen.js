@@ -2,11 +2,12 @@ import React from "react";
 
 import SetButton from "../../Components/SetButtonFolder/SetButton";
 import "./HomeScreen.css";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const mapStateToProps = (state) => ({
-  userData: state.userData.userData
-})
+  userData: state.userData.userData,
+});
 
 const HomeScreen = ({ userData }) => {
   return (
@@ -21,6 +22,11 @@ const HomeScreen = ({ userData }) => {
           return <SetButton key={set.id} set={set} />;
         })}
       </div>
+
+      {/* render add set button here, link to AddSetScreen */}
+      <Link to="/addSet">
+        <i className="fa fa-plus add-set-btn"></i>
+      </Link>
     </div>
   );
 };
