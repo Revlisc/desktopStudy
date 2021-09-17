@@ -26,7 +26,12 @@ input.form-input {
   font-size: 1.2rem;
   border: none;
   border-radius: 7px;
+  box-shadow: 2px 4px 4px rgb(228, 228, 228);
 }
+
+/* .formItem {
+  box-shadow: 2px 4px 4px grey;
+} */
 
 .edit-question {
   /* edit question set to relative to position exit button */
