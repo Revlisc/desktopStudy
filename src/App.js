@@ -81,7 +81,7 @@ class App extends Component {
             }
           />
 
-          {/* route for EditSetScreen */}
+          
           <Route exact path="/home" render={() => <HomeScreen />} />
           <Route exact path="/editSet" render={() => <EditSetScreen />} />
           <Route exact path="/addSet" render={() => <AddSetScreen />} />
