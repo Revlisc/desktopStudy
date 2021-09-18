@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createSet } from "../../Redux/actions";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import AddNewQuestion from "../../Components/AddNewQuestionComponent/AddNewQuestionComponent";
 import EditQuestion from "../../Components/EditQuestion/EditQuestion";
 import { v4 as uuidv4 } from "uuid";
