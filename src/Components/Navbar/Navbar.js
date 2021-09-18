@@ -51,7 +51,7 @@ class Navbar extends Component {
           <div className="nav-right">
             <li>
               <NavLink exact to="/profile" className="nav-link">
-                <img src={placeholder} className="profile-placeholder" />
+                <img src={placeholder} alt='placeholder' className="profile-placeholder" />
               </NavLink>
             </li>
           </div>

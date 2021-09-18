@@ -106,6 +106,7 @@ const ReviewScreen = ({ userData }) => {
           className="reviewBack"
           onClick={() => {
             showPrevCard();
+            setFlip(false)
           }}
         >
           <i className="fas fa-arrow-left"></i>
@@ -117,6 +118,7 @@ const ReviewScreen = ({ userData }) => {
           className="reviewNext"
           onClick={() => {
             showNextCard();
+            setFlip(false)
           }}
         >
           <i className="fas fa-arrow-right " />

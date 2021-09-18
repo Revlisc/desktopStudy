@@ -24,9 +24,11 @@ const HomeScreen = ({ userData }) => {
       </div>
 
       {/* render add set button here, link to AddSetScreen */}
-      <Link to="/addSet">
-        <i className="fa fa-plus add-set-btn"></i>
-      </Link>
+      <p className='add-set-p'>
+        <Link to="/addSet">
+          <i className="fa fa-plus add-set-btn"></i>
+        </Link>
+      </p>
     </div>
   );
 };

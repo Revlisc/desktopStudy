@@ -49,12 +49,6 @@ input.text-input {
   margin-left: 1rem;
 }
 
-.introPic {
-  margin-left: 10rem;
-  display:inline-flex;
-  
-}
-
 .loginDiv {
   display: flex;
 }
