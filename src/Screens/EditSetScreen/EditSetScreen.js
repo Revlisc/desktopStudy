@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 import AddNewQuestion from "../../Components/AddNewQuestionComponent/AddNewQuestionComponent";
 import EditQuestion from "../../Components/EditQuestion/EditQuestion";
 import { updateSet } from "../../Redux/actions";
+import { deleteSet } from "../../Redux/actions";
 
 import "./EditSetScreen.css";
 
-const EditSetScreen = ({ userData, updateSet }) => {
+const EditSetScreen = ({ userData, updateSet, deleteSet }) => {
   //grabbing setId from location param
   const location = useLocation();
   const { setId } = location.state;
@@ -77,6 +79,12 @@ const EditSetScreen = ({ userData, updateSet }) => {
     const updatedSet = { ...currentSet, questions: updatedQuestions };
     setCurrentSet(updatedSet);
     setFillButton(true);
+  };
+
+  const handleSetDelete = (e) => {
+    e.preventDefault();
+    const updatedState = userData.filter((set) => set.id !== currentSet.id);
+    deleteSet(updatedState);
   };
 
   //this will submit ALL changes
@@ -152,6 +160,7 @@ const EditSetScreen = ({ userData, updateSet }) => {
 
         <AddNewQuestion handleSubmit={handleNewQuestionSubmit} currentSet={currentSet} />
         <div className="submitBtn-wrapper">
+          <button onClick={(e) => handleSetDelete(e)}>Delete this set</button>
           {!showCheckMark ? (
             <button
               className={`submitBtn ${fillButton ? "fillBtn" : ""}`}
@@ -175,6 +184,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   updateSet: (updatedState) => dispatch(updateSet(updatedState)),
+  deleteSet: (updatedState) => dispatch(deleteSet(updatedState)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditSetScreen);
