@@ -19,3 +19,8 @@ export const createSet = (newSet) => ({
   type: actionTypes.CREATE_SET,
   payload: newSet,
 });
+
+export const deleteSet = (updatedState) => ({
+  type: actionTypes.DELETE_SET,
+  payload: updatedState,
+});

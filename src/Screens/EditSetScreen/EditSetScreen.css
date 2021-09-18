@@ -50,6 +50,22 @@ input.form-input {
   transition: all 500ms;
 }
 
+.deleteBtn {
+  margin: 15px 0;
+  padding: 10px;
+  border-style: none;
+  border-radius: 7px;
+
+  transition: all 500ms;
+  background-color: rgb(255, 126, 126);
+  margin-right: 15px;
+}
+
+.deleteBtn:hover {
+  cursor: pointer;
+  background-color: rgb(211, 0, 0);
+}
+
 .submitBtn:hover {
   cursor: pointer;
 }
