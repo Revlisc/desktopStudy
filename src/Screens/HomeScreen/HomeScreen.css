@@ -17,4 +17,11 @@
 i.fa.fa-plus.add-set-btn {
   opacity: 1;
   position: static;
+  margin-left: 0.5rem;
+  max-width: 25px;
+}
+
+.add-set-p {
+  max-width: 3rem;
+  margin-left: 2rem;
 }

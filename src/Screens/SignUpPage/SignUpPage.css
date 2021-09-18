@@ -1,14 +1,16 @@
 .signInBg {
   background-color: #f5f8ff;
+  
 }
 
 .formContainer {
   background-color: white;
   margin-left: 3rem;
-  max-width: 20rem;
-  min-width: 20rem;
+  max-width: 30rem;
+  min-width: 25rem;
   width: 100%;
-  display: inline-block;
+  display:inline-block;
+  border-radius: 1rem;
 }
 
 input.userbar {
@@ -49,8 +51,9 @@ input.text-input {
 }
 
 .introPic {
-  margin-left: 10rem;
-  display:inline-flex;
+  margin-left: 5rem;
+  display: flex;
+  
 }
 
 .signUpDiv {
@@ -68,3 +71,8 @@ input.text-input {
   text-align: center;
 }
 
+@media only screen and (max-width: 1200px) {
+   .introPic {
+     display: none;
+   }
+}
