@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import AddNewQuestion from "../../Components/AddNewQuestionComponent/AddNewQuestionComponent";
 import EditQuestion from "../../Components/EditQuestion/EditQuestion";
 import { updateSet } from "../../Redux/actions";
 import { deleteSet } from "../../Redux/actions";
-
+import { v4 as uuidv4 } from "uuid";
 import "./EditSetScreen.css";
 
 const EditSetScreen = ({ userData, updateSet, deleteSet }) => {
   //grabbing setId from location param
   const location = useLocation();
   const { setId } = location.state;
+  const history = useHistory();
   //filter out set being edited from all sets
   let setFromProps = userData.filter((set) => set.id === setId)[0];
 
   const [currentSet, setCurrentSet] = useState(setFromProps);
   const [fillButton, setFillButton] = useState(false);
+  const [deleted, setDeleted] = useState(false);
   const [showCheckMark, setShowCheckmark] = useState(false);
+
+  useEffect(() => {
+    deleted && history.push("/home");
+  }, [deleted]);
 
   //change showCheckmark back to false after 5 seconds
   useEffect(() => {
@@ -44,7 +50,7 @@ const EditSetScreen = ({ userData, updateSet, deleteSet }) => {
 
     //add to currentSet in local state
     const questions = currentSet.questions;
-    const newQuestion = { question: term, answer: definition, id: Math.random() * 1000 };
+    const newQuestion = { question: term, answer: definition, id: uuidv4() };
     const updatedQuestions = questions.concat(newQuestion);
     //merge new questions into new set
     const updatedSet = { ...currentSet, questions: updatedQuestions };
@@ -85,6 +91,7 @@ const EditSetScreen = ({ userData, updateSet, deleteSet }) => {
     e.preventDefault();
     const updatedState = userData.filter((set) => set.id !== currentSet.id);
     deleteSet(updatedState);
+    setDeleted(true);
   };
 
   //this will submit ALL changes
@@ -160,7 +167,10 @@ const EditSetScreen = ({ userData, updateSet, deleteSet }) => {
 
         <AddNewQuestion handleSubmit={handleNewQuestionSubmit} currentSet={currentSet} />
         <div className="submitBtn-wrapper">
-          <button onClick={(e) => handleSetDelete(e)}>Delete this set</button>
+          <button className="deleteBtn" onClick={(e) => handleSetDelete(e)}>
+            Delete this set
+          </button>
+
           {!showCheckMark ? (
             <button
               className={`submitBtn ${fillButton ? "fillBtn" : ""}`}
