@@ -34,3 +34,4 @@ mongoose
 // return error if all fields are not entered during user registration
 // check if email is valid during registration
 //require password length?
+// use express validator library for this

@@ -38,3 +38,13 @@ export const login = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
+export const authenticateUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    err.status(500).send("Server Error");
+  }
+};
