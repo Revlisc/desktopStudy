@@ -39,6 +39,8 @@ export const login = async (req, res) => {
   }
 };
 
+//authenticate logged in user with token. req.user.id comes from auth middleware
+
 export const authenticateUser = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");

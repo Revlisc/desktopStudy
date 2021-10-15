@@ -12,7 +12,7 @@ export const auth = async (req, res, next) => {
   //verify token
 
   try {
-    const decoded = jwt.verify(token, config.get("mysecrettoken"));
+    const decoded = jwt.verify(token, config.get("jwtSecret"));
     //when we assigned the token, the userId is included in the encoded token
     req.user = decoded.user;
     //pass userId to authenticateUser function
