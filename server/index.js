@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import userRouter from "./routes/user.js";
+import authRouter from "./routes/auth.js";
 
 const app = express();
 //dotenv is required to access .env variables
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 //app.use(cors());
 
 app.use("/user", userRouter);
+app.use("/auth", authRouter);
 
 //mongo
 
